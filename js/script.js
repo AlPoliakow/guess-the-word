@@ -28,12 +28,13 @@ button.addEventListener("click", function(e){
     e.preventDefault(); // stops page from reloading
     message.innerText="";
 
-    const guess = letterInput.value;
+    const guess = letterInput.value.toUpperCase();
     // call the function that checks the input and pass it the input value as an argument
      //save the result of this function call to a variable and log it out to the console
     const validatedGuess= validateInput(guess);
    // console.log(validatedGuess);
    letterInput.value="";
+   makeGuess(guess);
 });
 
 const validateInput = function(input) {
@@ -51,5 +52,13 @@ const validateInput = function(input) {
     }
 };
 
-
-//up to Create a Function to Capture Input
+// function that accepts a letter as the parameter
+const makeGuess = function(guess){
+    guess=guess.toUpperCase(); // convert to upper case for JavaScript
+ if (guessedLetters.includes(guess)){
+    message.innerText='You have already guessed that letter, try a different letter';
+ } else {
+    guessedLetters.push(guess);
+    console.log(guessedLetters);
+ }
+};
