@@ -27,3 +27,5 @@ button.addEventListener("click", function(e){
     input.value="";
 });
 
+Check: did the branching work?
+
