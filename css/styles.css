@@ -80,6 +80,10 @@ h1 {
   text-align: center;
 }
 
+.center {
+  text-align: center;
+}
+
 .guess-form {
   display: flex;
   flex-direction: column;
