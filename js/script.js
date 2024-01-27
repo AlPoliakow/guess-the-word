@@ -24,7 +24,6 @@ const getWord = async function (){
 
 getWord();
 
-
 const placeholder = function (){
     const placeholderLetters=[]; 
     for (const letter of word) {
@@ -34,9 +33,7 @@ const placeholder = function (){
     wordInProgress.innerText= placeholderLetters.join("");
 };
 
-
 placeholder(word);
-
 
 button.addEventListener("click", function(e){
     e.preventDefault(); 
@@ -108,11 +105,12 @@ const guessCount = function(guess){
     if (wordUpper.includes(guess)){
         message.innerText="You guessed one of the mystery letters!";
     } else {
-        message.innerText = "Good guess, but not quite";
-         remainingGuesses=remainingGuesses-1;
+        message.innerText = `Good guess, but the mystery word doesn't include "${guess}".`;
+        remainingGuesses=remainingGuesses-1;
     }
+
     if (remainingGuesses===0){
-        remaining.innerHTML=`<p>GAMEOVER<br> ☠ ☠ ☠ <br><br>The mystery word was "${wordUpper}"</p>`;
+        message.innerHTML=`<p>GAMEOVER<br> ☠ ☠ ☠ <br><br>The mystery word was "${wordUpper}"</p>`;
         startOver();
     }
     if (remainingGuesses===1){
@@ -127,34 +125,46 @@ const checkForWin = function () {
     if (wordInProgress.innerText === word.toUpperCase()) {
         message.classList.add("win");
         message.innerHTML = `<p class="highlight">You guessed correct the word! Congrats!</p>`;
+        //startOver if won
         startOver();
     }
 };
 
 const startOver = function(){
+    //hide the guess button
     button.classList.add("hide");
+    // hide the remaining guesses
     remaining.classList.add("hide");
+    // hide the UL with the guessed letters
     guessedLettersElement.classList.add("hide");
+    //hide the guess form
     guessForm.classList.add("hide");
     guessBox.classList.add("hide");
+    // show the play-again button
     playAgain.classList.remove("hide");
 };
 
 playAgain.addEventListener("click", function(){
+    // refresh the message
     message.classList.remove("win");
     message.innerText="";
+    // reset and show the guessed letters
     guessedLettersElement.innerHTML="";
     guessedLetters=[];
+    guessedLettersElement.classList.remove("hide");
+    //show the guess button and hide the play again button
     button.classList.remove("hide");
+    playAgain.classList.add("hide");
+    //show the guess form
     guessForm.classList.remove("hide");
     guessBox.classList.remove("hide");
-    guessedLettersElement.classList.remove("hide");
-    remaining.classList.remove("hide");
+    // reset and show the remaining guesses
     remainingGuesses=8;
-    remaining.InnerHTML=`<p>You have <span>${remainingGuesses} guesses</span> remaining.</p>`;
+    remainingSpan.innerText=`${remainingGuesses} guesses`;
+    remaining.classList.remove("hide");
+    //fetch a new word
     getWord();
+    //refresh the circle symbols
     placeholder(word);
-    playAgain.classList.add("hide");
 });
 
-// error with remaining guesses message not resetting remainingGuesses
