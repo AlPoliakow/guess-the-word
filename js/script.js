@@ -8,7 +8,9 @@ const message = document.querySelector(".message");
 const playAgain = document.querySelector(".play-again");
 let word="magnolia";
 var remainingGuesses= 8;
-const guessedLetters=[]; 
+let guessedLetters=[]; 
+const guessForm = document.querySelector(".enter");
+const guessBox = document.querySelector(".letter");
 
 const getWord = async function (){
     const res = await fetch("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
@@ -65,7 +67,6 @@ const validateInput = function(input) {
 
 const makeGuess = function(guess){
     guess=guess.toUpperCase(); 
-
     if (guessedLetters.includes(guess)){
     message.innerText='You have already guessed that letter, try a different letter';
     } else {
@@ -112,6 +113,7 @@ const guessCount = function(guess){
     }
     if (remainingGuesses===0){
         remaining.innerHTML=`<p>GAMEOVER<br> ☠ ☠ ☠ <br><br>The mystery word was "${wordUpper}"</p>`;
+        startOver();
     }
     if (remainingGuesses===1){
         remainingSpan.innerText = "1 FINAL guess";
@@ -125,5 +127,34 @@ const checkForWin = function () {
     if (wordInProgress.innerText === word.toUpperCase()) {
         message.classList.add("win");
         message.innerHTML = `<p class="highlight">You guessed correct the word! Congrats!</p>`;
+        startOver();
     }
 };
+
+const startOver = function(){
+    button.classList.add("hide");
+    remaining.classList.add("hide");
+    guessedLettersElement.classList.add("hide");
+    guessForm.classList.add("hide");
+    guessBox.classList.add("hide");
+    playAgain.classList.remove("hide");
+};
+
+playAgain.addEventListener("click", function(){
+    message.classList.remove("win");
+    message.innerText="";
+    guessedLettersElement.innerHTML="";
+    guessedLetters=[];
+    button.classList.remove("hide");
+    guessForm.classList.remove("hide");
+    guessBox.classList.remove("hide");
+    guessedLettersElement.classList.remove("hide");
+    remaining.classList.remove("hide");
+    remainingGuesses=8;
+    remaining.InnerHTML=`<p>You have <span>${remainingGuesses} guesses</span> remaining.</p>`;
+    getWord();
+    placeholder(word);
+    playAgain.classList.add("hide");
+});
+
+// error with remaining guesses message not resetting remainingGuesses
