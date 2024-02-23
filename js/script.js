@@ -77,11 +77,15 @@ const makeGuess = function(guess){
 
 const displayGuessedLetters = function(){
     guessedLettersElement.innerHTML="";
+    const wordUpper = word.toUpperCase();
+    const wordArray = wordUpper.split("");
     for (const letter of guessedLetters){
-    const li = document.createElement("li");
-    li.innerText = letter;
-    guessedLettersElement.append(li);
+        if (!wordArray.includes(letter)){
+            const li = document.createElement("li");
+            li.innerText = letter;
+            guessedLettersElement.append(li);
     }
+}
 };
 
 const updateWordInProgress = function (guessedLetters){
