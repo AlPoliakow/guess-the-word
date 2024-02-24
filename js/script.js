@@ -114,7 +114,10 @@ const guessCount = function(guess){
     }
 
     if (remainingGuesses===0){
-        message.innerHTML=`<p>GAMEOVER<br> ☠ ☠ ☠ <br><br>The mystery word was "${wordUpper}"</p>`;
+        message.innerHTML=`<h1>GAMEOVER<br><br> ☠ ☠ ☠ </h1><br><p>Click to reveal the mystery word</p>`;
+        wordInProgress.addEventListener("click", function(){
+                wordInProgress.innerText = wordUpper;
+        });
         startOver();
     }
     if (remainingGuesses===1){
@@ -141,6 +144,8 @@ const startOver = function(){
     guessBox.classList.add("hide");
     playAgain.classList.remove("hide");
 };
+
+
 
 playAgain.addEventListener("click", function(){
     message.classList.remove("win");
