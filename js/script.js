@@ -114,7 +114,7 @@ const guessCount = function(guess){
     }
 
     if (remainingGuesses===0){
-        message.innerHTML=`<h1>GAMEOVER<br><br> ☠ ☠ ☠ </h1><br><p>Click to reveal the mystery word</p>`;
+        message.innerHTML=`<h1>GAMEOVER<br><br> ☠ ☠ ☠ </h1><br><p>Click on the dots to reveal the mystery word</p>`;
         wordInProgress.addEventListener("click", function(){
                 wordInProgress.innerText = wordUpper;
         });
