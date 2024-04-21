@@ -12,6 +12,7 @@ let guessedLetters=[];
 const guessForm = document.querySelector(".enter");
 const guessBox = document.querySelector(".letter");
 
+//fetch a random word
 const getWord = async function (){
     const res = await fetch("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
     const words = await res.text();
@@ -24,6 +25,7 @@ const getWord = async function (){
 
 getWord();
 
+// make a dot represent each letter 
 const placeholder = function (){
     const placeholderLetters=[]; 
     for (const letter of word) {
@@ -35,6 +37,7 @@ const placeholder = function (){
 
 placeholder(word);
 
+//make a guess on click
 button.addEventListener("click", function(e){
     e.preventDefault(); 
     message.innerText="";
@@ -46,6 +49,7 @@ button.addEventListener("click", function(e){
    makeGuess(validatedGuess); 
 });
 
+//validate the guess is a single letter
 const validateInput = function(input) {
     const acceptedLetter = /[a-zA-Z]/;
 
@@ -61,7 +65,7 @@ const validateInput = function(input) {
     }
 };
 
-
+//check if guessed letter is repeated, correct or incorrect
 const makeGuess = function(guess){
     guess=guess.toUpperCase(); 
     if (guessedLetters.includes(guess)){
@@ -75,6 +79,7 @@ const makeGuess = function(guess){
     }
 };
 
+//display incorrectly guessed letters in an array
 const displayGuessedLetters = function(){
     guessedLettersElement.innerHTML="";
     const wordUpper = word.toUpperCase();
@@ -88,6 +93,7 @@ const displayGuessedLetters = function(){
 }
 };
 
+//swap the placeholder dot for a correctly guessed letter
 const updateWordInProgress = function (guessedLetters){
     const wordUpper = word.toUpperCase();
     const wordArray = wordUpper.split("");
@@ -104,6 +110,7 @@ const updateWordInProgress = function (guessedLetters){
     checkForWin();
 };
 
+//decreased the guesses left after each incorrect guess
 const guessCount = function(guess){
     wordUpper = word.toUpperCase();
     if (wordUpper.includes(guess)){
@@ -128,6 +135,7 @@ const guessCount = function(guess){
     }
 };
 
+//check if the word has been guessed correctly
 const checkForWin = function () { 
     if (wordInProgress.innerText === word.toUpperCase()) {
         message.classList.add("win");
@@ -136,6 +144,7 @@ const checkForWin = function () {
     }
 };
 
+//restart the game
 const startOver = function(){
     button.classList.add("hide");
     remaining.classList.add("hide");
@@ -144,7 +153,6 @@ const startOver = function(){
     guessBox.classList.add("hide");
     playAgain.classList.remove("hide");
 };
-
 
 
 playAgain.addEventListener("click", function(){
