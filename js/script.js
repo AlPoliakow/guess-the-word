@@ -27,7 +27,7 @@ getWord();
 const placeholder = function (){
     const placeholderLetters=[]; 
     for (const letter of word) {
-        console.log(letter);
+        //console.log(letter);
         placeholderLetters.push("●");
     }
     wordInProgress.innerText= placeholderLetters.join("");
@@ -68,7 +68,7 @@ const makeGuess = function(guess){
     message.innerText='You have already guessed that letter, try a different letter';
     } else {
     guessedLetters.push(guess);
-    console.log(guessedLetters);
+    //console.log(guessedLetters);
     displayGuessedLetters(guess);
     guessCount(guess);
     updateWordInProgress(guessedLetters);
@@ -91,7 +91,7 @@ const displayGuessedLetters = function(){
 const updateWordInProgress = function (guessedLetters){
     const wordUpper = word.toUpperCase();
     const wordArray = wordUpper.split("");
-    console.log(wordArray);
+    //console.log(wordArray);
     const revealLetter = [];
     for (const letter of wordArray){
         if (guessedLetters.includes(letter)){
