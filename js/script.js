@@ -12,6 +12,11 @@ let guessedLetters=[];
 const guessForm = document.querySelector(".enter");
 const guessBox = document.querySelector(".letter");
 
+const difficulty = document.querySelector(".difficulty");
+const sixGuesses = document.querySelector(".six");
+const sevenGuesses = document.querySelector(".seven");
+const eightGuesses = document.querySelector(".eight");
+
 //fetch a random word
 const getWord = async function (){
     const res = await fetch("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
@@ -36,6 +41,45 @@ const placeholder = function (){
 };
 
 placeholder(word);
+
+// start with difficulty
+const selectDifficulty = function (){
+    difficulty.classList.remove("hide");
+    remaining.classList.add("hide");
+    guessForm.classList.add("hide");
+    guessBox.classList.add("hide");
+    button.classList.add("hide");
+};
+
+selectDifficulty();
+
+//choose difficulty level
+sixGuesses.addEventListener("click", function(e){
+    remainingGuesses=6;
+    startWithDifficulty();
+});
+
+sevenGuesses.addEventListener("click", function(e){
+    remainingGuesses=7;
+    startWithDifficulty();
+});
+
+eightGuesses.addEventListener("click", function(e){
+    remainingGuesses=8;
+    startWithDifficulty();
+});
+
+
+
+// start game with selected difficulty
+const startWithDifficulty = function(){
+    difficulty.classList.add("hide");
+    remaining.classList.remove("hide");
+    guessForm.classList.remove("hide");
+    guessBox.classList.remove("hide");
+    button.classList.remove("hide");
+    remainingSpan.innerText = `${remainingGuesses} guesses`;
+};
 
 //make a guess on click
 button.addEventListener("click", function(e){
@@ -165,9 +209,7 @@ playAgain.addEventListener("click", function(){
     playAgain.classList.add("hide");
     guessForm.classList.remove("hide");
     guessBox.classList.remove("hide");
-    remainingGuesses=8;
-    remainingSpan.innerText=`${remainingGuesses} guesses`;
-    remaining.classList.remove("hide");
+    selectDifficulty();
     getWord();
     placeholder(word);
 });

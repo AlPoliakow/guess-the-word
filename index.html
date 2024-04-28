@@ -19,14 +19,17 @@
         <img class="logo" src="img/logo.png" alt="Guess The Word" />
       </h1>
       <p class="message"></p>
+      <div class="difficulty">
+        <p>How many guesses would you like?</p></p><button class="six">6</button><button class="seven">7</button><button class="eight">8</button>
+      </div>
       <p class="word-in-progress"></p>
-      <p class="remaining">You have <span>8 guesses</span> remaining.</p>
+      <p class="remaining hide">You have <span>8 guesses</span> remaining.</p>
       <ul class="guessed-letters"></ul>
       <form class="guess-form">
-        <label for="letter" class="enter">Type one letter:</label>
-        <input type="text" id="letter" name="letter" class="letter enter"/>
+        <label for="letter" class="enter hide">Type one letter:</label>
+        <input type="text" id="letter" name="letter" class="letter enter hide"/>
         <div class="form-element button-element">
-          <button class="guess">Guess!</button>
+          <button class="guess hide">Guess!</button>
         </div>
       </form>
       <button class="play-again hide">Play Again!</button>

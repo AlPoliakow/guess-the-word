@@ -26,7 +26,7 @@ body {
 h1 {
   width: 100%;
   padding-top: 1em;
-  margin: 0;
+  margin: 0 0 20px 0;
   font-family: "Unlock", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -64,6 +64,18 @@ h1 {
   letter-spacing: 15px;
   color: #28bdbd;
   font-size: 30px;
+}
+
+.difficulty {
+  text-align:center;
+}
+.difficulty button{
+  margin: 0.4em;
+  background: #FFFFFF;
+  font-size: 2em;
+  border-radius:0.25em;
+  padding: o.25em 0.5em;
+  cursor: pointer;
 }
 
 .guessed-letters {
