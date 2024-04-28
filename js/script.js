@@ -205,10 +205,7 @@ playAgain.addEventListener("click", function(){
     guessedLettersElement.innerHTML="";
     guessedLetters=[];
     guessedLettersElement.classList.remove("hide");
-    button.classList.remove("hide");
     playAgain.classList.add("hide");
-    guessForm.classList.remove("hide");
-    guessBox.classList.remove("hide");
     selectDifficulty();
     getWord();
     placeholder(word);
