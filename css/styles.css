@@ -36,8 +36,8 @@ h1 {
 
 .container {
   background: radial-gradient(50% 50% at 50% 50%,
-    rgba(167, 237, 237, 0.3) 0%,
-    rgba(156, 226, 226, 0) 100%);
+      rgba(167, 237, 237, 0.3) 0%,
+      rgba(156, 226, 226, 0) 100%);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -67,14 +67,15 @@ h1 {
 }
 
 .difficulty {
-  text-align:center;
+  margin-top: 30px;
+  text-align: center;
 }
 
-.difficulty button{
+.difficulty button {
   margin: 0.4em;
   background: #FFFFFF;
   font-size: 2em;
-  border-radius:0.25em;
+  border-radius: 0.25em;
   padding: o.25em 0.5em;
   cursor: pointer;
 }
@@ -91,6 +92,19 @@ h1 {
 
 .message {
   text-align: center;
+}
+
+.alphabet {
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 60%;
+}
+
+
+.alphabet p {
+  margin: 0.25em;
+  padding: 0 0.25em;
+  outline: solid black 1px;
 }
 
 .guess-form {

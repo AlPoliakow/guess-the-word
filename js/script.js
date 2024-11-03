@@ -35,7 +35,7 @@ const placeholder = function (){
     const placeholderLetters=[]; 
     for (const letter of word) {
         //console.log(letter);
-        placeholderLetters.push("●");
+        placeholderLetters.push("?");
     }
     wordInProgress.innerText= placeholderLetters.join("");
 };
@@ -44,6 +44,7 @@ placeholder(word);
 
 // start with difficulty
 const selectDifficulty = function (){
+    message.innerText= "The word is:";
     difficulty.classList.remove("hide");
     remaining.classList.add("hide");
     guessForm.classList.add("hide");
@@ -91,12 +92,13 @@ button.addEventListener("click", function(e){
    
    letterInput.value="";
    makeGuess(validatedGuess); 
-});
+
+  });
+
 
 //validate the guess is a single letter
 const validateInput = function(input) {
     const acceptedLetter = /[a-zA-Z]/;
-
     if (input.length === 0) {  
         message.innerText="Please enter a letter to guess";
     } else if (input.length > 1){ 
@@ -108,6 +110,7 @@ const validateInput = function(input) {
         return input;
     }
 };
+
 
 //check if guessed letter is repeated, correct or incorrect
 const makeGuess = function(guess){
@@ -137,7 +140,7 @@ const displayGuessedLetters = function(){
 }
 };
 
-//swap the placeholder dot for a correctly guessed letter
+//swap the placeholder for a correctly guessed letter
 const updateWordInProgress = function (guessedLetters){
     const wordUpper = word.toUpperCase();
     const wordArray = wordUpper.split("");
@@ -147,7 +150,7 @@ const updateWordInProgress = function (guessedLetters){
         if (guessedLetters.includes(letter)){
             revealLetter.push(letter.toUpperCase());
         } else {
-            revealLetter.push("●");
+            revealLetter.push("?");
         }
     }
     wordInProgress.innerText = revealLetter.join("");
@@ -165,7 +168,7 @@ const guessCount = function(guess){
     }
 
     if (remainingGuesses===0){
-        message.innerHTML=`<h1>GAMEOVER<br><br> ☠ ☠ ☠ </h1><br><p>Click on the dots to reveal the mystery word</p>`;
+        message.innerHTML=`<h1>GAMEOVER<br><br> ☠ ☠ ☠ </h1><br><p>Click on the question mark(s) to reveal the mystery word</p>`;
         wordInProgress.addEventListener("click", function(){
                 wordInProgress.innerText = wordUpper;
         });
