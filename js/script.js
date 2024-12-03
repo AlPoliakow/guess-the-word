@@ -104,7 +104,7 @@ const validateInput = function(input) {
     } else if (input.length > 1){ 
         message.innerText = "Please guess one letter a time";
     } else if (!input.match(acceptedLetter)) {   
-        message.innerText = "Please make sure your guess is a letter (a-z)";
+        message.innerText = "Please guess a letter (a-z)";
     } else {
         message.innerText = "Your guess has been accepted"
         return input;
@@ -116,7 +116,7 @@ const validateInput = function(input) {
 const makeGuess = function(guess){
     guess=guess.toUpperCase(); 
     if (guessedLetters.includes(guess)){
-    message.innerText='You have already guessed that letter, try a different letter';
+    message.innerText=`You've already guessed "${guess}"`;
     } else {
     guessedLetters.push(guess);
     //console.log(guessedLetters);
@@ -161,9 +161,9 @@ const updateWordInProgress = function (guessedLetters){
 const guessCount = function(guess){
     wordUpper = word.toUpperCase();
     if (wordUpper.includes(guess)){
-        message.innerText="You guessed one of the mystery letters!";
+        message.innerText="You guessed a mystery letter!";
     } else {
-        message.innerText = `Good guess, but the mystery word doesn't include "${guess}".`;
+        message.innerText = `There's no "${guess}". Try Again!`;
         remainingGuesses=remainingGuesses-1;
     }
 
