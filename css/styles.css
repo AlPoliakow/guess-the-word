@@ -19,18 +19,14 @@ body {
 }
 
 .logo {
-  width: 70%;
-  max-width: 484px;
+  width: 100%;
+  max-width: 400px;
 }
 
 h1 {
   width: 100%;
   padding-top: 1em;
-  margin: 0 0 20px 0;
-  font-family: "Unlock", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 44px;
+  margin: 0 0 10px 0;
   text-align: center;
 }
 
@@ -64,15 +60,20 @@ h1 {
   letter-spacing: 15px;
   color: #28bdbd;
   font-size: 30px;
+  margin: 0.125em 0 0.25em 0;
 }
 
 .difficulty {
-  margin-top: 30px;
+  margin-top: 2em;
   text-align: center;
 }
 
+.difficulty p {
+  margin-bottom:0;
+}
+
 .difficulty button {
-  margin: 0.4em;
+  margin: 0 0.4em 0.4em 0.4em;
   background: #FFFFFF;
   font-size: 2em;
   border-radius: 0.25em;
@@ -83,6 +84,7 @@ h1 {
 .guessed-letters {
   padding: 0;
   list-style: none;
+  margin:10px 0;
 }
 
 .guessed-letters li {
@@ -91,20 +93,13 @@ h1 {
 }
 
 .message {
+  margin: 8% 0 0.5em 0;
   text-align: center;
+  font-size: 1em;
 }
 
-.alphabet {
-  flex-flow: row wrap;
-  justify-content: center;
-  width: 60%;
-}
-
-
-.alphabet p {
-  margin: 0.25em;
-  padding: 0 0.25em;
-  outline: solid black 1px;
+.remaining{
+  margin-bottom:0;
 }
 
 .guess-form {
@@ -123,8 +118,8 @@ h1 {
 input {
   width: 2.25em;
   text-align: center;
-  font-size: 1.5em;
-  margin-top: 0.5em;
+  font-size: 1.25em;
+  margin-top: 0.25em;
   padding: 0.5em;
   border: 3px solid #28bdbd;
 }
@@ -149,6 +144,10 @@ input:focus {
   cursor: pointer;
 }
 
+.guess {
+  padding: 0.5em 2em;
+}
+
 .guess:active,
 .play-again:active,
 .guess:focus,
@@ -161,12 +160,30 @@ input:focus {
   color: white;
 }
 
-/* animatied background */
 .win {
   padding: 0 1em;
+  margin: 1em;
   background: linear-gradient(-45deg, #ff9d64, #f5620c);
   background-size: 400% 400%;
   animation: gradient 2s ease infinite;
+}
+
+/*---TABLET STYLES---*/
+@media (min-width: 768px) {
+  .message {
+    margin-top:4%;
+  }
+}
+
+/*---DESKTOP STYLES---*/
+@media (min-width: 1200px) {
+  .logo {
+    max-width: 600px;
+  }
+
+  .message {
+    margin-top:2%;
+  }
 }
 
 @keyframes gradient {
