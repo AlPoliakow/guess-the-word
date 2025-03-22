@@ -25,8 +25,7 @@ body {
 
 h1 {
   width: 100%;
-  padding-top: 1em;
-  margin: 0 0 10px 0;
+  margin: 15px 0;
   text-align: center;
 }
 
@@ -39,6 +38,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   width: 90%;
+  height: 50%; /* to prevent adjustment when keyboard is shown on mobile*/
 }
 
 .hide {
@@ -69,7 +69,7 @@ h1 {
 }
 
 .difficulty p {
-  margin-bottom:0;
+  margin:0 0 15px 0;
 }
 
 .difficulty button {
@@ -93,7 +93,7 @@ h1 {
 }
 
 .message {
-  margin: 8% 0 0.5em 0;
+  margin: 0.5em 0;
   text-align: center;
   font-size: 1em;
 }
@@ -117,6 +117,7 @@ h1 {
 
 input {
   width: 2.25em;
+  height: 100%; /* to show all of the letter g and y */
   text-align: center;
   font-size: 1.25em;
   margin-top: 0.25em;
@@ -170,6 +171,10 @@ input:focus {
 
 /*---TABLET STYLES---*/
 @media (min-width: 768px) {
+  h1 {
+    margin: 8% 0 15px 0;
+  }
+
   .message {
     margin-top:4%;
   }
